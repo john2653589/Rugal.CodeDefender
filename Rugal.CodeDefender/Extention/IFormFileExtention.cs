@@ -25,6 +25,9 @@ namespace Rugal.CodeDefender.Extention
 
         public static bool IsVerify(this IFormFile File, params FileType[] Types)
         {
+            if (File is null)
+                return true;
+
             var Extension = Path.GetExtension(File.FileName).TrimStart('.');
             var LowerTypes = Types
                 .Select(Item => Item.ToString().ToLower());
